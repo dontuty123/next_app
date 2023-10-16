@@ -3,9 +3,8 @@
 import { Providers } from "@/lib/provider";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
+      {children}
+      <ToastContainer autoClose={1000} />
     </Providers>
   );
 }

@@ -2,14 +2,14 @@
 
 import axios, { AxiosInstance } from "axios";
 
-class Http {
+class UserHttp {
   instace: AxiosInstance;
   constructor() {
     this.instace = axios.create({
-      baseURL: "https://65276e29917d673fd76daf4d.mockapi.io/",
+      baseURL: "https://reqres.in/",
     });
   }
 }
 
-const http = new Http().instace;
-export default http;
+const userHttp = new UserHttp().instace;
+export default userHttp;

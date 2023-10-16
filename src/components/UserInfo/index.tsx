@@ -1,10 +1,10 @@
 /** @format */
 
-import { UserType } from "@/types/user.type";
+import { TUser } from "@/types/user.type";
 import React from "react";
 
 interface PropsType {
-  userInfo: UserType | undefined;
+  userInfo: TUser | undefined;
 }
 
 export default function UserInfo({ userInfo }: PropsType) {
@@ -17,7 +17,7 @@ export default function UserInfo({ userInfo }: PropsType) {
           className="rounded-full w-[35%] h-full mb-5"
         />
         <div className="text-2xl font-semibold">
-          {userInfo?.name.firstname} {userInfo?.name.lastname}
+          {userInfo?.firstname} {userInfo?.lastname}
         </div>
         <span className="text-md text-gray-500">{userInfo?.email}</span>
         <button className="flex items-center bg-transparent hover:bg-blue-500 text-sm text-blue-700 mt-2 hover:text-white py-[6px] px-4 border border-blue-500 hover:border-transparent rounded-3xl">

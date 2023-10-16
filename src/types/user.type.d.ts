@@ -1,23 +1,23 @@
 /** @format */
 
-export interface UserType {
+export type TUser = {
   id?: string;
-  email: string;
+  email?: string;
   username?: string;
-  password: string;
-  phone: string;
-  name: {
-    firstname: string;
-    lastname: string;
-  };
-  address: {
-    city: string;
-    street: string;
-    number?: number;
-    zipcode: string;
-    geolocation?: {
-      lat?: string;
-      long?: string;
-    };
-  };
+  password?: string;
+  phone?: string;
+  firstname?: string;
+  lastname?: string;
+  image?: string;
+  city?: string;
+  street?: string;
+  description?: string;
+  number?: number;
+  zipcode?: string;
+}
+
+export interface IUserSign {
+  email?: string
+  username?: string
+  password?: string
 }

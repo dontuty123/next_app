@@ -2,56 +2,49 @@
 
 import { AppDispatch } from "@/lib/redux/store";
 import { updateUser } from "@/lib/redux/user.slice";
-import { UserType } from "@/types/user.type";
+import { TUser } from "@/types/user.type";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 interface PropsType {
-  userInfo: UserType | undefined;
+  userInfo: TUser | undefined;
 }
 
 export default function UserController({ userInfo }: PropsType) {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [city, setCity] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [zip, setZip] = useState<string>("");
+  const [user, setUser] = useState<TUser | undefined>(userInfo || undefined);
   const dispatch = useDispatch<AppDispatch>();
+
+  const handleInputChange = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({
+      ...user,
+      [target.name]: target.value,
+    });
+  };
 
   useEffect(() => {
     if (userInfo) {
-      setFirstName(userInfo?.name.firstname);
-      setLastName(userInfo?.name.lastname);
-      setEmail(userInfo?.email);
-      setPassword(userInfo?.password);
-      setAddress(userInfo?.address.street);
-      setCity(userInfo?.address.city);
-      setZip(userInfo?.address.zipcode);
-      setPhone(userInfo?.phone);
+      setUser(userInfo);
     }
   }, [userInfo]);
 
-  const handleSubmidBtn = (event: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmitBtn = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const userToUpdate: UserType = {
-      id: userInfo?.id,
-      address: {
-        street: address,
-        city: city,
-        zipcode: zip,
-      },
-      email: email,
-      name: {
-        firstname: firstName,
-        lastname: lastName,
-      },
-      password: password,
-      phone: phone,
+    const userToUpdate: TUser = {
+      ...user,
     };
+    user;
     dispatch(updateUser(userToUpdate));
+  };
+
+  const handleInputAreaChange = ({
+    target,
+  }: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setUser({
+      ...user,
+      [target.name]: target.value,
+    });
   };
 
   return (
@@ -65,24 +58,22 @@ export default function UserController({ userInfo }: PropsType) {
             <div className="font-light mb-1">First name</div>
             <input
               type="text"
-              value={firstName}
+              value={user?.firstname}
+              name="firstname"
               placeholder="Fill in you first name"
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setFirstName(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
           <div className="w-full">
             Last name
             <input
               type="text"
-              value={lastName}
+              value={user?.lastname}
+              name="lastname"
               placeholder="Fill in you last name"
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setLastName(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -93,23 +84,21 @@ export default function UserController({ userInfo }: PropsType) {
             <div className="font-light mb-1">Email</div>
             <input
               type="email"
+              name="email"
               placeholder="example@gmail.com"
-              value={email}
+              value={user?.email}
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
           <div className="w-full">
             <div className="font-light mb-1">Password</div>
             <input
               type="password"
-              value={password}
+              name="password"
+              value={user?.password}
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -120,12 +109,11 @@ export default function UserController({ userInfo }: PropsType) {
             <div className="font-light mb-1">Address</div>
             <input
               type="text"
-              value={address}
+              value={user?.street}
+              name="street"
               placeholder="Fill in your address"
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setAddress(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -136,12 +124,11 @@ export default function UserController({ userInfo }: PropsType) {
             <div className="font-light mb-1">City</div>
             <input
               type="text"
-              value={city}
+              value={user?.city}
+              name="city"
               placeholder="Fill in your city"
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                setCity(event.target.value)
-              }
+              onChange={handleInputChange}
             />
           </div>
           <div className="w-1/2 flex">
@@ -149,23 +136,21 @@ export default function UserController({ userInfo }: PropsType) {
               <div className="font-light mb-1">Phone Number</div>
               <input
                 type="text"
-                value={phone}
+                name="phone"
+                value={user?.phone}
                 placeholder="Fill in your phone"
                 className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  setPhone(event.target.value)
-                }
+                onChange={handleInputChange}
               />
             </div>
             <div className="w-2/5">
               <div className="font-light mb-1">Zip</div>
               <input
                 type="text"
-                value={zip}
+                value={user?.zipcode}
+                name="zipcode"
                 className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  setZip(event.target.value)
-                }
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -177,6 +162,9 @@ export default function UserController({ userInfo }: PropsType) {
             <div className="font-light mb-1">Description</div>
             <textarea
               rows={4}
+              value={user?.description}
+              onChange={handleInputAreaChange}
+              name="description"
               placeholder="Say something"
               className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
             />
@@ -184,7 +172,7 @@ export default function UserController({ userInfo }: PropsType) {
         </div>
       </div>
       <button
-        onClick={handleSubmidBtn}
+        onClick={handleSubmitBtn}
         className="bg-blue-500 mb-5 hover:bg-blue-700 text-white border font-bold py-2 px-4 rounded mt-6 w-[30%]"
       >
         Submit
