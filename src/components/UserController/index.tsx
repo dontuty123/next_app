@@ -48,7 +48,7 @@ export default function UserController({ userInfo }: PropsType) {
   };
 
   return (
-    <div className="w-4/6 bg-whtie-rounded-lg px-5 ml-5 my-5 bg-white shadow-md rounded-xl">
+    <div className="w-4/6 bg-white dark:bg-gray-800 rounded-lg px-5 ml-5 my-5 shadow-md">
       <div className="p-5 border-b border-gray-300">
         <span>Account Details</span>
       </div>
@@ -61,7 +61,7 @@ export default function UserController({ userInfo }: PropsType) {
               value={user?.firstname}
               name="firstname"
               placeholder="Fill in you first name"
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
               onChange={handleInputChange}
             />
           </div>
@@ -72,7 +72,7 @@ export default function UserController({ userInfo }: PropsType) {
               value={user?.lastname}
               name="lastname"
               placeholder="Fill in you last name"
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
               onChange={handleInputChange}
             />
           </div>
@@ -87,7 +87,7 @@ export default function UserController({ userInfo }: PropsType) {
               name="email"
               placeholder="example@gmail.com"
               value={user?.email}
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
               onChange={handleInputChange}
             />
           </div>
@@ -97,7 +97,7 @@ export default function UserController({ userInfo }: PropsType) {
               type="password"
               name="password"
               value={user?.password}
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
               onChange={handleInputChange}
             />
           </div>
@@ -112,7 +112,7 @@ export default function UserController({ userInfo }: PropsType) {
               value={user?.street}
               name="street"
               placeholder="Fill in your address"
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
               onChange={handleInputChange}
             />
           </div>
@@ -121,15 +121,17 @@ export default function UserController({ userInfo }: PropsType) {
       <div className="pt-4 ">
         <div className="flex items-center">
           <div className="pr-4 w-1/2">
-            <div className="font-light mb-1">City</div>
-            <input
-              type="text"
-              value={user?.city}
-              name="city"
-              placeholder="Fill in your city"
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
-              onChange={handleInputChange}
-            />
+            <div className="w-full">
+              <div className="font-light mb-1">City</div>
+              <input
+                type="text"
+                value={user?.city}
+                name="city"
+                placeholder="Fill in your city"
+                className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
           <div className="w-1/2 flex">
             <div className="w-3/5 pr-2">
@@ -139,7 +141,7 @@ export default function UserController({ userInfo }: PropsType) {
                 name="phone"
                 value={user?.phone}
                 placeholder="Fill in your phone"
-                className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
                 onChange={handleInputChange}
               />
             </div>
@@ -149,7 +151,7 @@ export default function UserController({ userInfo }: PropsType) {
                 type="text"
                 value={user?.zipcode}
                 name="zipcode"
-                className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
                 onChange={handleInputChange}
               />
             </div>
@@ -166,14 +168,14 @@ export default function UserController({ userInfo }: PropsType) {
               onChange={handleInputAreaChange}
               name="description"
               placeholder="Say something"
-              className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+              className="border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm p-2 w-full"
             />
           </div>
         </div>
       </div>
       <button
         onClick={handleSubmitBtn}
-        className="bg-blue-500 mb-5 hover:bg-blue-700 text-white border font-bold py-2 px-4 rounded mt-6 w-[30%]"
+        className="bg-blue-500 mb-5 hover:bg-blue-700 text-white dark:text-black/60 font-bold py-2 px-4 rounded mt-6 w-[30%] dark:bg-gray-300  dark:text-black dark:hover:text-black dark:hover:border-black"
       >
         Submit
       </button>

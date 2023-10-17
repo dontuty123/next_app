@@ -9,11 +9,13 @@ import { toast } from "react-toastify";
 interface UsersType {
   users: TUser[];
   loggedin: boolean
+  darkmode: boolean
 }
 
 const initialState: UsersType = {
   users: [],
-  loggedin: false
+  loggedin: false,
+  darkmode: false
 };
 
 export const getUserList = createAsyncThunk("user/getAllUsers", async () => {
@@ -77,6 +79,9 @@ const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.loggedin = false
+    },
+    darkmode: (state) => {
+      state.darkmode = !state.darkmode
     }
   },
   extraReducers(builder) {
@@ -120,7 +125,7 @@ const userSlice = createSlice({
   },
 });
 
-export const {logout} = userSlice.actions
+export const {logout, darkmode} = userSlice.actions
 const userReducer = userSlice.reducer;
 
 export default userReducer;

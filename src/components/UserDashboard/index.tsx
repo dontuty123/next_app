@@ -65,7 +65,7 @@ export default function UserDashboard() {
         contentButton="➕ Add User"
         directLink="/adduser"
       />
-      <div className="flex flex-col bg-white rounded-2xl  shadow-md">
+      <div className="flex flex-col bg-white dark:bg-gray-900 dark:text-white rounded-2xl shadow-md">
         <div className="border-b p-4">
           <span className="text-md font-medium">Active Users</span>
         </div>
@@ -83,7 +83,7 @@ export default function UserDashboard() {
         {curUsers?.map(({ id, firstname, lastname, city, street, phone }) => (
           <div className="p-4 border-b w-full" key={id}>
             <div className="grid grid-cols-12 gap-4 text-left">
-              <div className="col-span-1 font-normal">{id}</div>
+              <div className="col-span-1/2 font-normal">{id}</div>
               <div className="col-span-2 font-normal truncate">{firstname}</div>
               <div className="col-span-2 font-normal truncate">{lastname}</div>
               <div className="col-span-1 font-normal truncate">{city}</div>
@@ -91,12 +91,12 @@ export default function UserDashboard() {
               <div className="col-span-2 font-normal truncate">{phone}</div>
               <Link href={`/edituser/${id}`}>
                 <Button
-                  className="col-span-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded"
+                  className="col-span-1 bg-transparent hover:bg-blue-500 dark:text-white text-blue-700 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded"
                   contentButton="Edit"
                 />
               </Link>
               <Button
-                className="col-span-1 bg-transparent hover:bg-rose-500 text-rose-700 font-semibold hover:text-white px-4 border border-rose-500 hover:border-transparent rounded"
+                className="col-span-1 bg-transparent hover:bg-rose-500 dark:text-white text-rose-700 font-semibold hover:text-white px-4 border border-rose-500 hover:border-transparent rounded"
                 onClick={() => handleDeleteUser(id)}
                 contentButton="Delete"
               />

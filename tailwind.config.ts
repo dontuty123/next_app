@@ -26,6 +26,8 @@ const config: Config = {
     },
   },
 
+  darkMode: 'class',
+
   plugins: [
     plugin(function ({ addComponents, theme }: any) {
       addComponents({

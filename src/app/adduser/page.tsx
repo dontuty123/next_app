@@ -57,13 +57,13 @@ export default function AddUser() {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen pb-14">
+    <div className="bg-gray-200 text-black min-h-screen pb-14 dark:bg-gray-800 dark:text-white">
       <div className="container">
         <div className="px-6">
           <Title title="Add New User" />
 
-          <div className="bg-white shadow-md rounded-xl">
-            <div className="p-5 border-b">
+          <div className="bg-white shadow-md rounded-xl dark:bg-gray-900 dark:text-white">
+            <div className="p-5 border-b dark:border-b-0">
               <span>Account Details</span>
             </div>
             <div className="pt-6 pl-5 pr-5">
@@ -75,7 +75,7 @@ export default function AddUser() {
                     value={user?.firstname}
                     name="firstname"
                     placeholder="Fill in you first name"
-                    className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                    className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                     onChange={handleInputChange}
                   />
                 </div>
@@ -87,11 +87,11 @@ export default function AddUser() {
                     name="lastname"
                     onChange={handleInputChange}
                     placeholder="Fill in you last name"
-                    className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                    className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                   />
                 </div>
               </div>
-              <div className="pt-4 ">
+              <div className="pt-4">
                 <div className="flex items-center">
                   <div className="w-full pr-4">
                     <div className="font-light mb-1">Email</div>
@@ -99,7 +99,7 @@ export default function AddUser() {
                       type="email"
                       placeholder="example@gmail.com"
                       value={user?.email}
-                      className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                      className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                       name="email"
                       onChange={handleInputChange}
                     />
@@ -109,14 +109,14 @@ export default function AddUser() {
                     <input
                       type="password"
                       value={user?.password}
-                      className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                      className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                       name="password"
                       onChange={handleInputChange}
                     />
                   </div>
                 </div>
               </div>
-              <div className="pt-4 ">
+              <div className="pt-4">
                 <div className="flex items-center">
                   <div className="w-full">
                     <div className="font-light mb-1">Phone Number</div>
@@ -124,14 +124,14 @@ export default function AddUser() {
                       type="text"
                       value={user?.phone}
                       placeholder="Fill in your phone"
-                      className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                      className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                       name="phone"
                       onChange={handleInputChange}
                     />
                   </div>
                 </div>
               </div>
-              <div className="pt-4 ">
+              <div className="pt-4">
                 <div className="flex items-center">
                   <div className="pr-4 w-1/2">
                     <div className="font-light mb-1">Address</div>
@@ -139,7 +139,7 @@ export default function AddUser() {
                       type="text"
                       value={user?.street}
                       placeholder="Fill in your address"
-                      className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                      className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                       name="street"
                       onChange={handleInputChange}
                     />
@@ -151,7 +151,7 @@ export default function AddUser() {
                         type="text"
                         value={user?.city}
                         placeholder="Fill in your city"
-                        className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                        className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                         name="city"
                         onChange={handleInputChange}
                       />
@@ -161,7 +161,7 @@ export default function AddUser() {
                       <input
                         type="text"
                         value={user?.zipcode}
-                        className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                        className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                         name="zipcode"
                         onChange={handleInputChange}
                       />
@@ -169,7 +169,7 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-              <div className="pt-4 ">
+              <div className="pt-4">
                 <div className="flex items-center">
                   <div className="w-full">
                     <div className="font-light mb-1">Description</div>
@@ -179,13 +179,13 @@ export default function AddUser() {
                       name="description"
                       onChange={handleInputAreaChange}
                       placeholder="Say something"
-                      className="border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full"
+                      className="bg-gray-100 text-black border border-gray-300 font-light focus:outline-none rounded-md text-sm p-2 w-full dark:bg-gray-900 dark:text-white dark:border-gray-300"
                     />
                   </div>
                 </div>
               </div>
               <Button
-                className="bg-blue-500 mb-5 hover:bg-blue-700 text-white border font-bold py-2 px-4 rounded mt-6 w-[30%]"
+                className="bg-blue-500 mb-5 hover:bg-blue-700 text-white dark:text-black/60 font-bold py-2 px-4 rounded mt-6 w-[30%] dark:bg-gray-300  dark:text-black dark:hover:text-black dark:hover:border-black"
                 onClick={handleSubmitBtn}
                 contentButton="Submit"
               />

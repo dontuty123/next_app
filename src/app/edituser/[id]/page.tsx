@@ -21,11 +21,10 @@ export default function EditUser() {
   }, [users, id]);
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 text-black min-h-screen dark:bg-gray-900 dark:text-white">
       <div className="container">
         <div className="px-6">
           <Title title="User Profile" />
-
           <div className="flex">
             <UserInfo userInfo={userInfo} />
             <UserController userInfo={userInfo} />

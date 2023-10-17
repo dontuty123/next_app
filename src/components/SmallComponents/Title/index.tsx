@@ -19,12 +19,19 @@ export default function Title({
 }: TitleType) {
   return (
     <div className="text-left text-md mb-0 py-6 w-full">
-      <span className="uppercase text-xs text-gray-500">dashboard</span>
+      <span className="uppercase text-xs text-gray-500 dark:text-gray-400">
+        dashboard
+      </span>
       <div className="flex justify-between">
-        <h3 className="page-title text-4xl font-semibold">{title}</h3>
+        <h3 className="page-title text-4xl font-semibold dark:text-white">
+          {title}
+        </h3>
         {isButton && (
           <Link href={directLink ? directLink : ""}>
-            <Button contentButton= {contentButton} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"/>
+            <Button
+              contentButton={contentButton}
+              className="bg-transparent hover:bg-blue-500 text-blue-700 dark:text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:bg-gray-700 dark:border-gray-700 dark:hover:border-blue-500"
+            />
           </Link>
         )}
       </div>

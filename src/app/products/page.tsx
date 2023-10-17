@@ -6,7 +6,7 @@ import Pagination from "@/components/SmallComponents/Pagination";
 import Title from "@/components/SmallComponents/Title";
 import { deleteProduct, getProductList } from "@/lib/redux/product.slice";
 import { AppDispatch, RootState } from "@/lib/redux/store";
-import { ProductType } from "@/types/product.type";
+import { IProduct } from "@/types/product.type";
 import classNames from "classnames";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ export default function Products() {
   );
   const [pages, setPages] = useState(0);
   const [curPage, setCurPage] = useState(1);
-  const [curProducts, setCurProducts] = useState<ProductType[]>();
+  const [curProducts, setCurProducts] = useState<IProduct[]>();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Products() {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 text-black min-h-screen dark:bg-gray-900 dark:text-white">
       <div className="container">
         <div className="px-6 pb-20">
           <Title
@@ -70,7 +70,7 @@ export default function Products() {
             contentButton="➕ Add Product"
             directLink="/addproduct"
           />
-          <div className="flex flex-col bg-white rounded-2xl  shadow-md">
+          <div className="flex flex-col bg-white rounded-2xl shadow-md dark:bg-gray-900 dark:text-white">
             <div className="border-b p-4">
               <span className="text-md font-medium">Active Users</span>
             </div>
@@ -112,12 +112,12 @@ export default function Products() {
                   </div>
                   <Link href={`/editproduct/${product.id}`}>
                     <Button
-                      className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 border border-blue-500 hover:border-transparent rounded dark:bg-gray-700 dark:hover:bg-blue-600 dark:text-white"
                       contentButton="Edit"
                     />
                   </Link>
                   <Button
-                    className="bg-transparent hover:bg-rose-500 text-rose-700 font-semibold truncate hover:text-white px-4 border border-rose-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-rose-500 text-rose-700 font-semibold truncate hover:text-white px-4 border border-rose-500 hover:border-transparent rounded dark:bg-gray-700 dark:hover:bg-rose-600 dark:text-white"
                     onClick={() => handleDeleteProduct(product?.id)}
                     contentButton="Delete"
                   />
@@ -125,7 +125,7 @@ export default function Products() {
               </div>
             ))}
           </div>
-          <div className="flex items-center justify-center mt-5">
+          <div className="flex items-center justify-center mt-5 dark:text-black">
             <Pagination
               curPage={curPage}
               handleNextPage={handleNextPage}
