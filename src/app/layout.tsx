@@ -2,6 +2,7 @@
 
 import { Providers } from "@/lib/provider";
 import "./globals.css";
+import "src/assets/gridAdditional.css";
 import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

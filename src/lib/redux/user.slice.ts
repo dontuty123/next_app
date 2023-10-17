@@ -48,8 +48,22 @@ export const deleteUser = createAsyncThunk(
 export const login = createAsyncThunk(
   "user/login",
   async (body: IUserSign) => {
-    const resposne = await userHttp.post<string>(`api/login`, body);
+    const resposne = await userHttp.post<IUserSign>(`api/login`, body);
     try{
+      return resposne.data;
+    }catch(error){
+      console.log(error)
+    }
+  }
+);
+
+
+export const signup = createAsyncThunk(
+  "user/signup",
+  async (body: IUserSign) => {
+    const resposne = await userHttp.post<IUserSign>(`api/register`, body);
+    try{
+      console.log(resposne)
       return resposne.data;
     }catch(error){
       console.log(error)
@@ -60,7 +74,11 @@ export const login = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.loggedin = false
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(getUserList.fulfilled, (state, action) => {
@@ -90,12 +108,19 @@ const userSlice = createSlice({
         toast.success("Xóa user thành công");
         state.users.splice(deleteUserIndex, 1);
       }).addCase(login.fulfilled, (state, action) => {
-        state.loggedin == true
-        console.log(window.location.href)
         window.location.href = "/"
-      });
+        return (state ={
+          ...state,
+          loggedin: true
+        })
+      }).addCase(signup.fulfilled, (state, action) => {
+        toast.success("Đăng ký thành công")
+        window.location.href = "/login";
+  })
   },
 });
+
+export const {logout} = userSlice.actions
 const userReducer = userSlice.reducer;
 
 export default userReducer;

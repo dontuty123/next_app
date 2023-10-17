@@ -32,17 +32,7 @@ export default function AddUser() {
       console.log("as");
       toast.warn("Vui lòng điền đầy đủ thông tin");
     } else {
-      const newUser: TUser = {
-        street: user?.street,
-        city: user?.city,
-        zipcode: user?.zipcode,
-        email: user?.email,
-        firstname: user?.firstname,
-        lastname: user?.lastname,
-        password: user?.password,
-        description: user?.description,
-        phone: user?.phone,
-      };
+      const newUser: TUser = user as TUser;
       dispatch(addUser(newUser));
       router.push("/");
     }

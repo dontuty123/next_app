@@ -2,6 +2,7 @@
 "use client";
 
 import { AppDispatch } from "@/lib/redux/store";
+import { signup } from "@/lib/redux/user.slice";
 import { IUserSign } from "@/types/user.type";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,8 +10,11 @@ import { useDispatch } from "react-redux";
 import alo from "src/assets/images/signupimg.jpg";
 
 export default function Signup() {
-  const [signupInfo, setSignupInfo] = useState<IUserSign | undefined>();
-  const [retypePassword, setRetypePassword] = useState<string>();
+  const [signupInfo, setSignupInfo] = useState<IUserSign | undefined>({
+    email: "",
+    password: "",
+  });
+  const [retypePassword, setRetypePassword] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
 
   const handleInputChange = ({
@@ -22,7 +26,19 @@ export default function Signup() {
     });
   };
 
-  const handleSubmitBtn = () => {};
+  const handleSubmitBtn = () => {
+    if (signupInfo?.password == retypePassword) {
+      const newUser: IUserSign = signupInfo as IUserSign;
+      console.log(newUser);
+      dispatch(signup(newUser));
+    }
+  };
+
+  const handleRetypeChange = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setRetypePassword(target.value);
+  };
 
   return (
     <div className="h-[100vh] flex bg-gray-50 w-full flex-col md:flex-row">
@@ -95,11 +111,10 @@ export default function Signup() {
                     </label>
                     <div className="mt-1">
                       <input
-                        name="password"
                         type="password"
                         autoComplete="current-password"
-                        value={signupInfo?.password}
-                        onChange={handleInputChange}
+                        value={retypePassword}
+                        onChange={handleRetypeChange}
                         required
                         className="py-2 px-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
@@ -109,6 +124,7 @@ export default function Signup() {
                     <button
                       type="submit"
                       className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  mb-5"
+                      onClick={handleSubmitBtn}
                     >
                       Đăng ký
                     </button>
