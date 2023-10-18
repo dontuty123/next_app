@@ -93,7 +93,7 @@ export default function Pagination({
   };
 
   return (
-    <div className="mt-6 flex flex-wrap justify-center">
+    <div className="mt-6 flex flex-wrap justify-center dark:text-black">
       <Button
         className={classNames(
           "mx-2 cursor-pointer rounded border bg-white px-3 py-2 shadow-sm",

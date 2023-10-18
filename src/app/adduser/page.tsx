@@ -29,7 +29,6 @@ export default function AddUser() {
       user?.description == "" ||
       user?.zipcode == ""
     ) {
-      console.log("as");
       toast.warn("Vui lòng điền đầy đủ thông tin");
     } else {
       const newUser: TUser = user as TUser;

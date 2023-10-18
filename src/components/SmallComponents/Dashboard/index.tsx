@@ -14,15 +14,9 @@ interface IDashboard {
   curCols: ICols[];
   curRows: any;
   title: string;
-  rowLimit?: number;
 }
 
-export default function Dashboard({
-  curRows,
-  curCols,
-  title,
-  rowLimit = 6,
-}: IDashboard) {
+export default function Dashboard({ curRows, curCols, title }: IDashboard) {
   const [pages, setPages] = useState<number>(0);
   const [rowInput, setRowInput] = useState<number>(6);
   const [curPage, setCurPage] = useState(1);
@@ -79,7 +73,7 @@ export default function Dashboard({
 
   return (
     <div>
-      <div className="overflow-auto w-full flex-nowrap rounded-2xl shadow-md bg-white dark:bg-gray-900 dark:text-white ">
+      <div className="overflow-auto w-full flex-nowrap dark:rounded-none rounded-2xl shadow-md bg-white dark:bg-gray-900 dark:text-white ">
         <div className="border-b p-4 flex justify-between items-center">
           <span className="text-md font-semibold">{title}</span>
           <div className="px-4">

@@ -1,65 +1,22 @@
 /** @format */
 "use client";
 
-import Button from "@/components/SmallComponents/Button";
 import Dashboard from "@/components/SmallComponents/Dashboard";
-import Pagination from "@/components/SmallComponents/Pagination";
 import Title from "@/components/SmallComponents/Title";
-import { deleteProduct, getProductList } from "@/lib/redux/product.slice";
+import { getProductList } from "@/lib/redux/product.slice";
 import { AppDispatch, RootState } from "@/lib/redux/store";
-import { IProduct } from "@/types/product.type";
-import classNames from "classnames";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Products() {
   const products = useSelector(
     (state: RootState) => state.productReducer.products
   );
-  const [pages, setPages] = useState(0);
-  const [curPage, setCurPage] = useState(1);
-  const [curProducts, setCurProducts] = useState<IProduct[]>();
   const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    const paginateUsers = products.slice(0, 6);
-    setPages(Math.ceil(products.length / 6));
-    setCurProducts(paginateUsers);
-  }, [products]);
-
-  useEffect(() => {
-    const firstIndex = (curPage - 1) * 6;
-    let secIndex = curPage * 6;
-    if (secIndex > products?.length) {
-      secIndex == products?.length;
-    }
-    const paginateUsers = products?.slice(firstIndex, secIndex);
-    setCurProducts(paginateUsers);
-  }, [curPage, products]);
 
   useEffect(() => {
     dispatch(getProductList());
   }, [dispatch]);
-
-  const handlePrevPage = () => {
-    if (curPage == 1) {
-      setCurPage(1);
-    } else {
-      setCurPage(curPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (curPage == pages) {
-    } else {
-      setCurPage(curPage + 1);
-    }
-  };
-
-  const handleDeleteProduct = (id: string | undefined) => {
-    dispatch(deleteProduct(id));
-  };
 
   const curCols = [
     {
