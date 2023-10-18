@@ -135,7 +135,7 @@ export default function UserController({ userInfo }: PropsType) {
           </div>
           <div className="w-1/2 flex">
             <div className="w-3/5 pr-2">
-              <div className="font-light mb-1">Phone Number</div>
+              <div className="font-light mb-1 truncate">Phone Number</div>
               <input
                 type="text"
                 name="phone"

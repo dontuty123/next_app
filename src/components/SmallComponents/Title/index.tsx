@@ -18,7 +18,7 @@ export default function Title({
   contentButton,
 }: TitleType) {
   return (
-    <div className="text-left text-md mb-0 py-6 w-full">
+    <div className="w-full text-left text-md mb-0 py-6">
       <span className="uppercase text-xs text-gray-500 dark:text-gray-400">
         dashboard
       </span>

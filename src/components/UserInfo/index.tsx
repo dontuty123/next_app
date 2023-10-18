@@ -11,11 +11,13 @@ export default function UserInfo({ userInfo }: PropsType) {
   return (
     <div className="w-2/6 bg-white dark:bg-gray-800 dark:text-white rounded-xl pt-4 shadow-md my-5 mr-5">
       <div className="flex flex-col items-center p-5 border-b dark:text-white">
-        <img
-          src="https://designrevision.com/demo/shards-dashboard-lite-react/static/media/0.73476783.jpg"
-          alt="a"
-          className="rounded-full w-[35%] h-full mb-5"
-        />
+        <div className="w-[35%] pb-[35%] relative mb-5">
+          <img
+            src={userInfo?.image}
+            alt="a"
+            className="w-full h-full top-0 left-0 absolute object-cover rounded-full"
+          />
+        </div>
         <div className="text-2xl font-semibold">
           {userInfo?.firstname} {userInfo?.lastname}
         </div>

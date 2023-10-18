@@ -37,7 +37,7 @@ export default function ProductController({ productInfo }: PropsType) {
   };
 
   return (
-    <div className="w-4/6 bg-white-rounded-lg px-5 ml-5 my-5 dark:bg-gray-800 dark:text-white rounded-xl dark:border-gray-300">
+    <div className="w-4/6 bg-white  px-5 ml-5 my-5 dark:bg-gray-800 dark:text-white rounded-xl dark:border-gray-300">
       <div className="p-5 border-b border-gray-300">
         <span>Product Details</span>
       </div>
@@ -97,7 +97,9 @@ export default function ProductController({ productInfo }: PropsType) {
           </div>
           <div className="w-1/2 flex">
             <div className="w-3/5 pr-2">
-              <div className="font-light mb-1">Price_before_discount</div>
+              <div className="font-light mb-1 truncate">
+                Price_before_discount
+              </div>
               <input
                 type="text"
                 value={product?.price_before_discount}

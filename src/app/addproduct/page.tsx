@@ -128,7 +128,7 @@ export default function AddProduct() {
                       />
                     </div>
                     <div className="w-2/5">
-                      <div className="font-light mb-1">
+                      <div className="font-light mb-1 truncate">
                         Price before discount
                       </div>
                       <input
