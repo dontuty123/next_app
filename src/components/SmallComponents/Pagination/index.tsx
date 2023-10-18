@@ -51,6 +51,7 @@ export default function Pagination({
       }
       return null;
     };
+
     return Array(pages)
       .fill(0)
       .map((_, index) => {

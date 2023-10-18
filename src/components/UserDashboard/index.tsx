@@ -59,12 +59,7 @@ export default function UserDashboard() {
         directLink="/adduser"
       />
 
-      <Dashboard
-        curCols={curCols}
-        curRows={userList}
-        title="Active Users"
-        rowLimit={6}
-      />
+      <Dashboard curCols={curCols} curRows={userList} title="Active Users" />
     </div>
   );
 }

@@ -106,7 +106,6 @@ export default function Products() {
           <Dashboard
             curCols={curCols}
             curRows={products}
-            rowLimit={10}
             title="Products On Sale"
           />
         </div>

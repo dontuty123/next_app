@@ -23,26 +23,29 @@ export default function Dashboard({
   title,
   rowLimit = 6,
 }: IDashboard) {
-  const [pages, setPages] = useState(0);
+  const [pages, setPages] = useState<number>(0);
+  const [rowInput, setRowInput] = useState<number>(6);
   const [curPage, setCurPage] = useState(1);
   const [curUsers, setCurUsers] = useState<TUser[]>();
   const dispatch = useDispatch<AppDispatch>();
 
+  //dựa trên số row của 1 page, chia lấy số pages và danh sách các user của trang thứ nhất.
   useEffect(() => {
-    const paginateUsers = curRows.slice(0, rowLimit);
-    setPages(Math.ceil(curRows.length / rowLimit));
+    const paginateUsers = curRows.slice(0, rowInput);
+    setPages(Math.ceil(rowInput > 0 ? curRows.length / rowInput : 1));
     setCurUsers(paginateUsers);
-  }, [curRows, rowLimit]);
+  }, [curRows, rowInput]);
 
+  //dựa trên trang hiện tại, tìm các index và sử dụng hàm slice để tạo mảng user và hiển thị các user của trang đó
   useEffect(() => {
-    const firstIndex = (curPage - 1) * rowLimit;
-    let secIndex = curPage * rowLimit;
+    const firstIndex = (curPage - 1) * rowInput;
+    let secIndex = curPage * rowInput;
     if (secIndex > curRows?.length) {
       secIndex == curRows?.length;
     }
     const paginateUsers = curRows?.slice(firstIndex, secIndex);
     setCurUsers(paginateUsers);
-  }, [curPage, curRows, rowLimit]);
+  }, [curPage, curRows, rowInput]);
 
   const handlePrevPage = () => {
     if (curPage == 1) {
@@ -63,11 +66,33 @@ export default function Dashboard({
     dispatch(deleteUser(id));
   };
 
+  //Loại bỏ kí tự khác số
+  const restrictToNumbers = (event: ChangeEvent<HTMLInputElement>) => {
+    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+  };
+
+  const handleChangeRowInput = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setRowInput(target.value);
+  };
+
   return (
     <div>
       <div className="overflow-auto w-full flex-nowrap rounded-2xl shadow-md bg-white dark:bg-gray-900 dark:text-white ">
-        <div className="border-b p-4">
+        <div className="border-b p-4 flex justify-between items-center">
           <span className="text-md font-semibold">{title}</span>
+          <div className="px-4">
+            <span className="text-md font-semibold">Rows per page</span>
+            <input
+              onInput={(event) =>
+                restrictToNumbers(event as ChangeEvent<HTMLInputElement>)
+              }
+              value={rowInput}
+              onChange={handleChangeRowInput}
+              className="ml-3 border border-gray-300 dark:bg-gray-900 dark:text-white font-light focus:outline-none rounded-md text-sm px-2 py-1"
+            />
+          </div>
         </div>
         <div className="p-4 border-b w-full">
           <div className="flex gap-4 text-left flex-nowrap">
