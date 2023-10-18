@@ -62,7 +62,7 @@ export default function Header() {
           <div>
             {isDarkmode == false ? (
               <button
-                className="hs-dark-mode-active hs-dark-mode group items-center hover:text-gray-700 font-medium dark:text-white  dark:hover:text-gray-500"
+                className="hs-dark-mode-active hs-dark-mode group items-center hover:text-gray-700 font-medium dark:text-white  dark:hover:text-gray-700"
                 onClick={handleDarkmode}
               >
                 <svg
@@ -82,7 +82,7 @@ export default function Header() {
               </button>
             ) : (
               <button
-                className="hs-dark-mode-active hs-dark-mode group  items-center font-medium dark:text-white hover:text-gray-700"
+                className="hs-dark-mode-active hs-dark-mode group dark:hover:text-gray-700 items-center font-medium dark:text-white hover:text-gray-700"
                 onClick={handleDarkmode}
               >
                 <svg
